@@ -1,0 +1,5 @@
+.ipynb_checkpoints/
+test/
+.cache*
+.env
+data.txt
