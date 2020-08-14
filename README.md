@@ -1,7 +1,6 @@
 ## Carlos: An exploration of Spotify's personalization processes
 
-<img src="assets/spotify-blob.png" alt="img" align="center" width="300px" alt="Your music insight">
-<img src="assets/taste-clustering.jpg" alt="img" align="center" width="300px" alt="Your music insight">
+<img src="assets/cluster-taste.png" alt="img" align="center" width="500px" alt="Your music insight">
 
 Spotify launched their Discover Weekly playlists in 2015, and it has been a great success. The secret? A mixture of collaborative filtering with music from other users, and a profile of each user’s music tastes. A Quartz Editor got an exclusive look into the inner workings of the system and a beautiful visual representation of their taste profile.
 
@@ -9,8 +8,7 @@ Carlos is a study into the various methods used in Spotify's personalization alg
 
 Of course, I don't have access to as much data as Spotify, or the advanced deep learning knowledge to actually recreate the algorithms. I'll be using common machine learning methods and libraries to create a primitive copy of those processes as described in online resources for Spotify's personalization and recommendation system. 
 
-<img src="assets/cluster-genres-qz.png" alt="img" align="center" width="300px" alt="Spotify cluster genres">
-<img src="assets/cluster-genres.png" alt="img" align="center" width="300px" alt="My clustered genres">
+<img src="assets/cluster-genre.png" alt="img" align="center" width="500px" alt="Spotify cluster genres">
 
 ### Running the project
 The Jupyter notebooks are available to view directly through Github. If interested in running it locally, you should have Jupyter installed. Run `pip install jupyter` to install. 
