@@ -2,9 +2,7 @@ import matplotlib.pyplot as plt
 import circlify as circ
 from collections import defaultdict
 
-import os
-import sys
-import json
+import os, sys, json
 import seaborn as sn
 import pandas as pd
 import numpy as np
@@ -77,7 +75,7 @@ plt.ylabel('variance %')
 plt.xticks(features)
 plt.show()
 
-plt.scatter(PCA_comp[0], PCA_comp[1], alpha=.2, color="black")
+plt.scatter(PCA_comp[0], PCA_comp[1], alpha=.4, color="black")
 plt.xlabel("PCA1")
 plt.ylabel("PCA2")
 plt.show()
@@ -174,14 +172,17 @@ PCA_comp_centroids = pd.DataFrame(principal_comp_centroids)
 
 # Spotify Taste Profile Heatmap with song scatter and annotations
 print("Plotting taste map...")
-fig, ax = plt.subplots()
 # Contour plot for clusters visualization
+sn.kdeplot(PCA_comp[0], PCA_comp[1], shade=True, shade_lowest=False)
+sc = plt.scatter(PCA_comp[0], PCA_comp[1], alpha=.4,
+                 c=top_tracks_normalized_df["cluster"].astype(float))
+plt.show()
+
+# plot cluster centroids
+fig, ax = plt.subplots()
 sn.kdeplot(PCA_comp[0], PCA_comp[1], shade=True, shade_lowest=False)
 sc = plt.scatter(PCA_comp_centroids[0], PCA_comp_centroids[1],
                  c=PCA_comp_centroids.index.astype(float))
-# sc = plt.scatter(PCA_comp[0], PCA_comp[1], alpha=.3,
-#                  c=top_tracks_normalized_df["cluster"].astype(float))
-
 
 def annotateCluster(i):
     xy = (PCA_comp_centroids[0][i], PCA_comp_centroids[1][i])

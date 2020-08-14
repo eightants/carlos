@@ -20,10 +20,32 @@ token = util.prompt_for_user_token(
     user_id, scope=scope, client_id=client_id, client_secret=client_secret, redirect_uri=redirect_uri)
 sp = spotipy.Spotify(auth=token)
 
-top_tracks = sp.current_user_top_tracks(limit=49, time_range="long_term")
+print("Enter the type of data to use: ")
+print("1. My Top Songs\n2. My Saved Songs\n3. A Playlist")
+choice = input("Choice: ")
+
+top_tracks = []
+if choice == "1":
+    top_tracks = sp.current_user_top_tracks(limit=49, time_range="long_term")
+elif choice == "2":
+    top_tracks = sp.current_user_saved_tracks(limit=50)
+elif choice == "3":
+    playlist_id = input("Enter playlist id: ")
+    top_tracks = sp.playlist_tracks(playlist_id)
+else:
+    print("Invalid choice")
+    exit(0)
+
+# get all the songs
 songs = top_tracks["items"]
-top_tracks = sp.next(top_tracks)
-songs.extend(top_tracks['items'])
+while top_tracks['next']:
+    top_tracks = sp.next(top_tracks)
+    songs.extend(top_tracks['items'])
+
+if choice != "1":
+    for i in range(len(songs)):
+        songs[i] = songs[i]["track"]
+
 
 # saves metadata and track ids into formatted variables
 trkid = []
@@ -36,17 +58,22 @@ for track in songs:
         {"name": track["name"], "id": track["id"], "artist": track["artists"][0]["name"]})
 
 # gets audio features
-audiofeatures = sp.audio_features(trkid)
+count = 0
+audiofeatures = []
+while count + 100 < len(trkid):
+    audiofeatures.extend(sp.audio_features(trkid[count:count + 100]))
+    count += 100
+audiofeatures.extend(sp.audio_features(trkid[count:]))
 print(str(len(audiofeatures)) + " songs analyzed")
 
 # gets artist genres
-count = 50
+count = 0
 artistid = list(artistid)
 artists = []
-while count < len(artistid):
-    artists.extend(sp.artists(artistid[:count])["artists"])
+while count + 50 < len(artistid):
+    artists.extend(sp.artists(artistid[count:count + 50])["artists"])
     count += 50
-artists.extend(sp.artists(artistid[count - 50:])["artists"])
+artists.extend(sp.artists(artistid[count:])["artists"])
 
 # format artist genres into array of objects
 artistgenres = []

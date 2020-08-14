@@ -26,6 +26,10 @@ USERNAME="your_spotify_username"
 
 **Generating visualizations**
 
-There are two ways to do so. 
-1. Open `spotify-taste-clustering.ipynb` through Jupyter and run the notebook, reading the inner workings step-by-step. 
-2. Run `datasetup.py` followed by `kmeans.py` to plot those graphs directly in Python. 
+Navigate to the directory for the visualization you want, e.g. `/taste-clustering`. Now you have two options. 
+1. Open the `.ipynb` file through Jupyter and run the notebook, reading the inner workings step-by-step. 
+2. Follow the readme file in the directory to run the `.py` scripts. 
+
+### About Carlos
+
+As an extension of the Whisperify app, the naming scheme is also based on the George Michael hit song. Carlos was used as it is pronounced similarly to "Careless". 
