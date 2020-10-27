@@ -1,5 +1,13 @@
+# Misc Files
 .ipynb_checkpoints/
 test/
 .cache*
 .env
+anonData.py
+compareRecommendations.py
+rec.py
+
+# Data Files
 data.txt
+*recsongs.txt
+ratings.csv

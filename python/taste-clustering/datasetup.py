@@ -10,7 +10,7 @@ load_dotenv()
 
 client_id = os.getenv('CLIENT_ID')
 client_secret = os.getenv('CLIENT_SECRET')
-user_id = os.getenv("USERNAME")
+user_id = os.getenv("USER_ID")
 
 redirect_uri = "http://localhost:9999"
 scope = 'user-library-read, playlist-modify-public, playlist-modify-private user-top-read'
