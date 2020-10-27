@@ -5,9 +5,11 @@ test/
 .env
 anonData.py
 compareRecommendations.py
+grabSongMetadata.py
 rec.py
 
 # Data Files
 data.txt
+_*.txt
 *recsongs.txt
 ratings.csv
